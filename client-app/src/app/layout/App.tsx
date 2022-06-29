@@ -15,14 +15,23 @@ function App(): JSX.Element {
 
     return (
         <>
-            <NavBar />
-            <Container style={{ marginTop: '7em' }}>
-                <Route path='/' exact component={HomePage} />
-                <Route path='/activities' exact component={ActivityDashboard} />
-                <Route path='/activities/:id' component={ActivityDetails} />
-                <Route key={location.key} path={['/createActivity','/manage/:id']} component={ActivityForm} />
+            <Route path='/' exact component={HomePage} />
+            <Route
+                path={'/(.+)'}
+                render={() => (
+                    <>
+                        <NavBar />
+                        <Container style={{ marginTop: '7em' }}>
 
-            </Container>
+                            <Route path='/activities' exact component={ActivityDashboard} />
+                            <Route path='/activities/:id' component={ActivityDetails} />
+                            <Route key={location.key} path={['/createActivity', '/manage/:id']} component={ActivityForm} />
+
+                        </Container>
+                    </>
+                    )
+                }
+            />
         </>
     );
 }

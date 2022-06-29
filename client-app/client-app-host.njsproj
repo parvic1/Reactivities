@@ -81,7 +81,25 @@
     <TypeScriptCompile Include="src\app\stores\activityStore.ts" />
     <TypeScriptCompile Include="src\app\stores\store.ts" />
     <TypeScriptCompile Include="src\features\activities\dashboard\ActivityDashboard.tsx" />
+    <TypeScriptCompile Include="src\features\activities\dashboard\ActivityFilters.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\features\activities\dashboard\ActivityList.tsx" />
+    <TypeScriptCompile Include="src\features\activities\dashboard\ActivityListItem.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\features\activities\details\ActivityDetailedChat.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\features\activities\details\ActivityDetailedHeader.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\features\activities\details\ActivityDetailedInfo.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\features\activities\details\ActivityDetailedSidebar.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\features\activities\details\ActivityDetails.tsx" />
     <TypeScriptCompile Include="src\features\activities\form\ActivityForm.tsx" />
     <TypeScriptCompile Include="src\features\home\HomePage.tsx" />
