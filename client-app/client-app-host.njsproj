@@ -45,6 +45,7 @@
     <Folder Include="src\features\activities\dashboard\" />
     <Folder Include="src\features\activities\details\" />
     <Folder Include="src\features\activities\form\" />
+    <Folder Include="src\features\home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -83,6 +84,7 @@
     <TypeScriptCompile Include="src\features\activities\dashboard\ActivityList.tsx" />
     <TypeScriptCompile Include="src\features\activities\details\ActivityDetails.tsx" />
     <TypeScriptCompile Include="src\features\activities\form\ActivityForm.tsx" />
+    <TypeScriptCompile Include="src\features\home\HomePage.tsx" />
     <TypeScriptCompile Include="src\index.tsx" />
     <TypeScriptCompile Include="src\react-app-env.d.ts" />
     <TypeScriptCompile Include="src\reportWebVitals.ts" />
