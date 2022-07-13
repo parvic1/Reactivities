@@ -17,6 +17,10 @@ using MediatR;
 using Application.Activities;
 using Application.Core;
 using API.Extensions;
+using FluentValidation.AspNetCore;
+using API.Middleware;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace API
 {
@@ -33,17 +37,30 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(opt =>
+            {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                opt.Filters.Add(new AuthorizeFilter(policy));
+            }).AddFluentValidation(config =>
+            {
+                // we only need to add one class that is inside the project. That tells Fluent what assembly is all the rules.
+                config.RegisterValidatorsFromAssemblyContaining<Create>();
+            });
+
             services.AddApplicationServices(_config);
+            services.AddIdentityServices(_config);
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseMiddleware<ExceptionMiddleware>();
+
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
             }
@@ -54,7 +71,9 @@ namespace API
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication(); //#1
+
+            app.UseAuthorization(); //#2
 
             app.UseEndpoints(endpoints =>
             {

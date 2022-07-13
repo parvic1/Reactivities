@@ -1,8 +1,8 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Icon, Item, Segment } from 'semantic-ui-react';
 import { Activity } from '../../../app/models/activity';
-import { useStore } from '../../../app/stores/store';
+import moment from "moment-timezone"
 
 interface Props {
     activity: Activity;
@@ -10,23 +10,13 @@ interface Props {
 
 const ActivityListItem = ({ activity }: Props) => {
 
-    const { activityStore } = useStore();
-    const { deleteActivity, loading } = activityStore;
-
-    const [target, setTarget] = useState('');
-
-    function handleActivityDelete(e: SyntheticEvent<HTMLButtonElement>, id: string) {
-        setTarget(e.currentTarget.name);
-        deleteActivity(id);
-    }
-
     return (
         <>
             <Segment.Group>
                 <Segment>
                     <Item.Group>
                         <Item>
-                            <Item.Image size='tiny' circular src='/assets/user.png' />
+                            <Item.Image size='tiny' circular src='/assets/user.png' alt='user' />
                             <Item.Content>
                                 <Item.Header as={Link} to={`/activities/${activity.id}`}>{activity.title}</Item.Header>
                                 <Item.Description>
@@ -38,7 +28,7 @@ const ActivityListItem = ({ activity }: Props) => {
                 </Segment>
                 <Segment>
                     <span>
-                        <Icon name='calendar' />{activity.date}
+                        <Icon name='calendar' />{moment(activity.date).tz('America/Chicago').format("MM/DD/yyyy hh:mm a")}
                         <Icon name='marker' />{activity.venue}
                     </span>
                 </Segment>

@@ -1,4 +1,5 @@
 import { observer } from 'mobx-react-lite';
+import moment from 'moment';
 import React from 'react'
 import { Segment, Grid, Icon } from 'semantic-ui-react'
 import { Activity } from "../../../app/models/activity";
@@ -27,7 +28,7 @@ export default observer(function ActivityDetailedInfo({ activity }: Props) {
                     </Grid.Column>
                     <Grid.Column width={15}>
                         <span>
-                            {activity.date}
+                            {moment(activity.date).tz('America/Chicago').format("MM/DD/yyyy hh:mm a")}
                         </span>
                     </Grid.Column>
                 </Grid>
