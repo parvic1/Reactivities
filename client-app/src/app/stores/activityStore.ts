@@ -21,7 +21,7 @@ export default class ActivityStore {
         return Object.entries(
 
             this.activitiesByDate.reduce((activities, activity) => {
-                const date = activity.date;
+                const date = activity.date.split('T')[0];
 
                 activities[date] = activities[date] ? [...activities[date], activity] : [activity];
 

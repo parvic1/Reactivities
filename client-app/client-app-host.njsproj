@@ -37,6 +37,7 @@
     <Folder Include="src\" />
     <Folder Include="src\app\" />
     <Folder Include="src\app\common\form\" />
+    <Folder Include="src\app\common\modals\" />
     <Folder Include="src\app\common\options\" />
     <Folder Include="src\app\layout\" />
     <Folder Include="src\app\models\" />
@@ -50,6 +51,7 @@
     <Folder Include="src\features\activities\form\" />
     <Folder Include="src\features\home\" />
     <Folder Include="src\features\errors\" />
+    <Folder Include="src\features\users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -90,6 +92,9 @@
     <TypeScriptCompile Include="src\app\common\form\MyTextInput.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\common\modals\ModalContainer.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\common\options\categoryOptions.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -97,8 +102,18 @@
     <TypeScriptCompile Include="src\app\layout\LoadingComponents.tsx" />
     <TypeScriptCompile Include="src\app\layout\NavBar.tsx" />
     <TypeScriptCompile Include="src\app\models\activity.ts" />
+    <TypeScriptCompile Include="src\app\models\user.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\stores\activityStore.ts" />
+    <TypeScriptCompile Include="src\app\stores\commonStore.ts" />
+    <TypeScriptCompile Include="src\app\stores\modalStore.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\stores\store.ts" />
+    <TypeScriptCompile Include="src\app\stores\userStore.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\features\activities\dashboard\ActivityDashboard.tsx" />
     <TypeScriptCompile Include="src\features\activities\dashboard\ActivityFilters.tsx">
       <SubType>Code</SubType>
@@ -124,10 +139,18 @@
     <TypeScriptCompile Include="src\features\errors\NotFound.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\features\errors\ServerError.tsx" />
     <TypeScriptCompile Include="src\features\errors\TestError.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\features\errors\ValidationErrors.tsx" />
     <TypeScriptCompile Include="src\features\home\HomePage.tsx" />
+    <TypeScriptCompile Include="src\features\users\LoginForm.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\features\users\RegisterForm.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\index.tsx" />
     <TypeScriptCompile Include="src\react-app-env.d.ts" />
     <TypeScriptCompile Include="src\reportWebVitals.ts" />
