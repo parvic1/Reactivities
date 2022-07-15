@@ -2,6 +2,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { User, UserFormValues } from "../models/user";
 import { store } from "./store";
+import { history } from '../..';
 
 export default class UserStore {
     //private _user: User | null = null;
@@ -19,13 +20,14 @@ export default class UserStore {
     login = async (creds: UserFormValues) => {
         try {
             const user = await agent.Account.login(creds);
-             store.commonStore.setToken(user.token);
+
+            store.commonStore.setToken(user.token);
 
              runInAction(() => this.user = user);
 
-             store.modalStore.closeModal();
-            window.location.href = `${window.location.origin}/activities`;
-            
+            store.modalStore.closeModal();
+
+            history.push(`/activities`);
            
         } catch (error) {
             throw error;
@@ -34,10 +36,11 @@ export default class UserStore {
 
 
     logout = () => {
-        window.localStorage.removeItem('user');
+        window.localStorage.removeItem('jwt');
         store.commonStore.setToken(null);
-         this.user = null;
-        window.location.href = `${window.location.origin}/`;
+        this.user = null;
+
+        history.push('/');
     };
 
     getUser = async () => {
@@ -52,8 +55,8 @@ export default class UserStore {
 
             runInAction(() => this.user = user);
 
+            history.push('/activities');
             store.modalStore.closeModal();
-            window.location.href = `${window.location.origin}/activities`;
 
             //history.push(`/account/registerSuccess?email=${creds.email}`);
             //window.location.href = `${window.location.origin}/account/registerSuccess?email=${creds.email}`;

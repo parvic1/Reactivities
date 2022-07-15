@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { Activity } from '../models/activity';
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
+import { history } from '../..';
 
 const sleep = (delay: number) => {
 
@@ -39,7 +40,8 @@ axios.interceptors.response.use(async response => {
             }
 
             if (config.method === 'get' && data.errors.hasOwnProperty('id')) {
-                window.location.href = `${window.location.origin}/not-found`;
+                //window.location.href = `${window.location.origin}/not-found`;
+                history.push('/not-found');
             }
 
             if (data.errors) {
@@ -57,12 +59,14 @@ axios.interceptors.response.use(async response => {
             toast.error('unauthorized');
             break;
         case 404:
-            window.location.href = `${window.location.origin}/not-found`;
+            history.push('/not-found');
+            //window.location.href = `${window.location.origin}/not-found`;
             //toast.error('not found');
             break;
         case 500:
             store.commonStore.setServerError(data);
-            window.location.href = `${window.location.origin}/server-error`;
+            //window.location.href = `${window.location.origin}/server-error`;
+            history.push('/server-error');
             break;
     }
 
