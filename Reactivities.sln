@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{EEB094AF-80C7-4F8A-BC16-3B989E6990B0}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "client-app-host", "client-app\client-app-host.njsproj", "{D7DDE366-17E0-43C6-B40D-A4B7B933317A}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "client-app", "client-app\client-app.njsproj", "{D7DDE366-17E0-43C6-B40D-A4B7B933317A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{B213F747-32E1-4BAF-9A4D-8C62E3BAAA97}"
 EndProject

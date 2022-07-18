@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { Button, Header, Segment } from 'semantic-ui-react'
 import LoadingComponents from '../../../app/layout/LoadingComponents';
-import { Activity } from '../../../app/models/activity';
+import { ActivityFormValues } from '../../../app/models/activity';
 import { useStore } from '../../../app/stores/store';
 import { v4 as uuid } from 'uuid';
 import { Formik, Form } from 'formik';
@@ -21,15 +21,7 @@ const ActivityForm = () => {
     const { createActivity, updateActivity, loading, loadActivity, loadingInitial } = activityStore;
     const { id } = useParams<{ id: string }>();
 
-    const [activity, setActivity] = useState<Activity>({
-        id: '',
-        title: '',
-        category: '',
-        description: '',
-        date: '',
-        city: '',
-        venue: ''
-    });
+    const [activity, setActivity] = useState<ActivityFormValues>(new ActivityFormValues());
 
     const validationSchema = Yup.object({
         title: Yup.string().required('The activity title is required'),
@@ -43,19 +35,26 @@ const ActivityForm = () => {
     useEffect(() => {
 
         if (id)
-            loadActivity(id).then(activity => setActivity(activity!));
+            loadActivity(id).then(activity => setActivity(new ActivityFormValues(activity)));
 
     }, [id, loadActivity]);
 
 
-    const handleFormSubmit = (activity: Activity) => {
+    const handleFormSubmit = (activity: ActivityFormValues) => {
         console.log(activity);
 
-        if (activity.id.length === 0) {
+        //const activity = new Activity(activityFormValues);
+
+        if (!activity.id) {
+
             const newActivity = { ...activity, id: uuid() };
+
             createActivity(newActivity).then(() => history.push(`/activities/${newActivity.id}`));
+
         } else {
+
             updateActivity(activity).then(() => history.push(`/activities/${activity.id}`));
+
         }
 
     };
@@ -89,8 +88,8 @@ const ActivityForm = () => {
                         <MyTextInput placeholder='Venue' name='venue' />
                         <Button
                             disabled={isSubmitting || !dirty || !isValid}
-                            floated='right' positive type='submit' content='Submit' loading={loading} />
-                        <Button as={Link} to='/activities' floated='right' type='button' content='Cancel' disabled={loading} />
+                            floated='right' positive type='submit' content='Submit' loading={isSubmitting} />
+                        <Button as={Link} to='/activities' floated='right' type='button' content='Cancel' disabled={isSubmitting} />
                     </Form>
                     )}
             </Formik>

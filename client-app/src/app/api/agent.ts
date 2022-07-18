@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
-import { Activity } from '../models/activity';
+import { Activity, ActivityFormValues } from '../models/activity';
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
 import { history } from '../..';
@@ -40,7 +40,6 @@ axios.interceptors.response.use(async response => {
             }
 
             if (config.method === 'get' && data.errors.hasOwnProperty('id')) {
-                //window.location.href = `${window.location.origin}/not-found`;
                 history.push('/not-found');
             }
 
@@ -60,12 +59,10 @@ axios.interceptors.response.use(async response => {
             break;
         case 404:
             history.push('/not-found');
-            //window.location.href = `${window.location.origin}/not-found`;
             //toast.error('not found');
             break;
         case 500:
             store.commonStore.setServerError(data);
-            //window.location.href = `${window.location.origin}/server-error`;
             history.push('/server-error');
             break;
     }
@@ -86,9 +83,10 @@ const requests = {
 const Activities = {
     list: () => requests.get<Activity[]>('/activities'),
     details: (id: string) => requests.get<Activity>(`/activities/${id}`),
-    create: (activity: Activity) => axios.post<void>('/activities', activity),
-    update: (id: string, activity: Activity) => axios.put<void>(`/activities/${id}`, activity),
+    create: (activity: ActivityFormValues) => requests.post<void>('/activities', activity),
+    update: (id: string, activity: ActivityFormValues) => requests.put<void>(`/activities/${id}`, activity),
     delete: (id: string) => requests.delete<void>(`/activities/${id}`),
+    attend: (id: string) => requests.post<void>(`/activities/${id}/attend`, {}),
 };
 
 const Account = {

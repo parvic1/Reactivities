@@ -11,7 +11,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d7dde366-17e0-43c6-b40d-a4b7b933317a</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
+    <ProjectHome>
+    </ProjectHome>
     <StartupFile>src/index.tsx</StartupFile>
     <StartWebBrowser>True</StartWebBrowser>
     <SearchPath>
@@ -51,6 +52,7 @@
     <Folder Include="src\features\activities\form\" />
     <Folder Include="src\features\home\" />
     <Folder Include="src\features\errors\" />
+    <Folder Include="src\features\profiles\" />
     <Folder Include="src\features\users\" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +104,9 @@
     <TypeScriptCompile Include="src\app\layout\LoadingComponents.tsx" />
     <TypeScriptCompile Include="src\app\layout\NavBar.tsx" />
     <TypeScriptCompile Include="src\app\models\activity.ts" />
+    <TypeScriptCompile Include="src\app\models\profile.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\models\user.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -120,6 +125,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\features\activities\dashboard\ActivityList.tsx" />
     <TypeScriptCompile Include="src\features\activities\dashboard\ActivityListItem.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\features\activities\dashboard\ActivityListItemAttendee.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\features\activities\details\ActivityDetailedChat.tsx">
@@ -145,6 +153,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\features\errors\ValidationErrors.tsx" />
     <TypeScriptCompile Include="src\features\home\HomePage.tsx" />
+    <TypeScriptCompile Include="src\features\profiles\ProfileCard.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\features\users\LoginForm.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>

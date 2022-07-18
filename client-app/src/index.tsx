@@ -10,6 +10,7 @@ import { BrowserRouter, Router } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { createBrowserHistory } from 'history';
 
+//Router History has been implemented this way so the exported object (History) is available to non-react objects like Stores.
 export const history = createBrowserHistory();
 
 ReactDOM.render(
