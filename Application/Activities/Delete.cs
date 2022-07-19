@@ -6,6 +6,7 @@ using MediatR;
 using Domain;
 using Persistence;
 using Application.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Activities
 {
@@ -26,7 +27,7 @@ namespace Application.Activities
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var activity = await _context.Activities.FindAsync(request.Id);
+                var activity = await _context.Activities.FirstOrDefaultAsync(a=>a.Id == request.Id);
 
                 //commented for testing. remove comments after testing exception middleware.
                // if (activity == null)

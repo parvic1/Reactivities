@@ -10,6 +10,8 @@ using Application.Activities;
 using Application.Core;
 using Application.Interfaces;
 using Infrastructure.Security;
+using Microsoft.Extensions.DependencyInjection;
+using Infrastructure.Photos;
 
 namespace API.Extensions
 {
@@ -38,7 +40,8 @@ namespace API.Extensions
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IUserAccessor, UserAccessor>();
-
+            services.AddScoped<IPhotoAccessor, PhotoAccessor>();
+            services.Configure<AzureStorageSettings>(config.GetSection("AzureStorage"));
 
             return services;
 
