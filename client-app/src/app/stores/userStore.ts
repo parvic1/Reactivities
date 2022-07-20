@@ -58,13 +58,17 @@ export default class UserStore {
             history.push('/activities');
             store.modalStore.closeModal();
 
-            //history.push(`/account/registerSuccess?email=${creds.email}`);
-            //window.location.href = `${window.location.origin}/account/registerSuccess?email=${creds.email}`;
-
-            //store.modalStore.closeModal();
         } catch (error) {
             throw error;
         }
+    }
+
+    setImage = (image: string) => {
+        if (this.user) this.user.image = image;
+    }
+
+    setDisplayName = (name: string) => {
+        if (this.user) this.user.displayName = name;
     }
 
 }

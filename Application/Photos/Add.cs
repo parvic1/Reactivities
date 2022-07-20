@@ -35,9 +35,12 @@ public class Add
 
         public async Task<Result<Photo>> Handle(Command request, CancellationToken cancellationToken)
         {
+            var currentUsername = _userAccessor.GetUsername();
 
             var user = await _context.Users.Include(p=>p.Photos)
-                .FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUsername());
+                .FirstOrDefaultAsync(x => x.UserName == currentUsername);
+
+            Console.WriteLine($"Adding photo for {currentUsername}");
 
             if (user == null) return null;
 
