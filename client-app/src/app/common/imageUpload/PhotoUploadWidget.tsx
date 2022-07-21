@@ -13,9 +13,7 @@ export default function PhotoUploadWidget({ loading, uploadPhoto }: Props) {
     const [cropper, setCropper] = useState<Cropper>();
 
     function onCrop() {
-        if (cropper) {
-            cropper.getCroppedCanvas().toBlob(blob => uploadPhoto(blob!));
-        }
+        cropper?.getCroppedCanvas().toBlob(blob => uploadPhoto(blob!));
     }
 
     useEffect(() => {

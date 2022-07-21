@@ -114,6 +114,7 @@
     <TypeScriptCompile Include="src\app\layout\LoadingComponents.tsx" />
     <TypeScriptCompile Include="src\app\layout\NavBar.tsx" />
     <TypeScriptCompile Include="src\app\models\activity.ts" />
+    <TypeScriptCompile Include="src\app\models\comment.ts" />
     <TypeScriptCompile Include="src\app\models\profile.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -121,6 +122,7 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\stores\activityStore.ts" />
+    <TypeScriptCompile Include="src\app\stores\commentStore.ts" />
     <TypeScriptCompile Include="src\app\stores\commonStore.ts" />
     <TypeScriptCompile Include="src\app\stores\modalStore.ts">
       <SubType>Code</SubType>
